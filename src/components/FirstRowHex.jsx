@@ -9,10 +9,10 @@ const nodeStyle4 = {left: '35px', top: '-60px'}
 const nodeStyle5 = {left: '92px', top: '-175px'}
 const nodeStyle6 = {left: '92px', top: '-265px'}
 
-export default function FirstRowHex({type, adjacent, position, last}) {
+export default function FirstRowHex({resource, adjacent, position, last}) {
   const nodes = [];
   for (let i = 0; i < 6; i++) {
-    let currentNode = [type]
+    let currentNode = [resource]
     let first = adjacent[Object.keys(adjacent)[i]];
     let second = adjacent[Object.keys(adjacent)[(i + 1) % 6]];
     if (first) {
@@ -29,7 +29,7 @@ export default function FirstRowHex({type, adjacent, position, last}) {
       <Node index={2} resources={nodes[1]} style={nodeStyle2}/>
       <Node index={3} resources={nodes[2]} style={nodeStyle3}/>
       <button className="hex" style={{top: '-60px'}}>
-        {type}
+        {resource}
       </button>
       <Node index={4} resources={nodes[3]} style={nodeStyle4}/>
       <Road style={{top: '-195px', left: '2px', transform: 'rotate(-34deg)'}}/>

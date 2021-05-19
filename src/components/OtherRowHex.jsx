@@ -8,10 +8,10 @@ const style3 = {left: '92px', top: '-124px'}
 const style4 = {left: '92px', top: '-215px'}
 const style5 = {left: '-22px', top: '-186px'}
 
-export default function OtherRowHex({type, adjacent, position, first, last}) {
+export default function OtherRowHex({resource, adjacent, position, first, last}) {
   const nodes = [];
   for (let i = 1; i < 6; i++) {
-    let currentNode = [type]
+    let currentNode = [resource]
     let first = adjacent[Object.keys(adjacent)[i]];
     let second = adjacent[Object.keys(adjacent)[(i + 1) % 6]];
     if (first) {
@@ -22,14 +22,10 @@ export default function OtherRowHex({type, adjacent, position, first, last}) {
     }
     nodes.push(currentNode);
   }
-  if (last) {
-    console.log('adjacent', adjacent)
-    console.log('nodes', nodes)
-  }
   return (
     <div className="full-hex">
       <button className="hex" >
-        {type}
+        {resource}
       </button>
       <Node index={3} resources={nodes[1]} style={style1}/>
       <Node index={4} resources={nodes[2]} style={style2}/>
