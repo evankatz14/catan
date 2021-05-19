@@ -6,8 +6,8 @@ const nodeStyle1 = {left: '35px'}
 const nodeStyle2 = {left: '-22px', top: '5px'}
 const nodeStyle3 = {left: '-22px', top: '35px'}
 const nodeStyle4 = {left: '35px', top: '-60px'}
-const nodeStyle5 = {left: '92px', top: '-125px'}
-const nodeStyle6 = {left: '92px', top: '-215px'}
+const nodeStyle5 = {left: '92px', top: '-175px'}
+const nodeStyle6 = {left: '92px', top: '-265px'}
 
 export default function FirstRowHex({type, adjacent, position, last}) {
   const nodes = [];
@@ -47,25 +47,16 @@ export default function FirstRowHex({type, adjacent, position, last}) {
         {type}
       </button>
       <Node index={4} resources={nodes[3]} style={nodeStyle4}/>
+      <Road style={{top: '-195px', left: '2px', transform: 'rotate(-34deg)'}}/>
+      <Road style={{top: '-155px', left: '-25px', transform: 'rotate(90deg)'}}/>
+      <Road style={{top: '-116px', left: '2px', transform: 'rotate(32deg)'}}/>
+      <Road style={{top: '-225px', left: '62px', transform: 'rotate(34deg)'}}/>
+      <Road style={{top: '-137px', left: '61px', transform: 'rotate(-32deg)'}}/>
       {last && (
         <>
           <Node index={5} resources={nodes[4]} style={nodeStyle5}/>
           <Node index={6} resources={nodes[5]} style={nodeStyle6}/>
-          <Road style={{top: '-255px', left: '2px', transform: 'rotate(-34deg)'}}/>
-          <Road style={{top: '-215px', left: '-25px', transform: 'rotate(90deg)'}}/>
-          <Road style={{top: '-177px', left: '3px', transform: 'rotate(32deg)'}}/>
-          <Road style={{top: '-285px', left: '62px', transform: 'rotate(34deg)'}}/>
-          <Road style={{top: '-245px', left: '89px', transform: 'rotate(90deg)'}}/>
-          <Road style={{top: '-206px', left: '61px', transform: 'rotate(-32deg)'}}/>
-        </>
-      )}
-      {!last && (
-        <>
-          <Road style={{top: '-195px', left: '2px', transform: 'rotate(-34deg)'}}/>
-          <Road style={{top: '-155px', left: '-25px', transform: 'rotate(90deg)'}}/>
-          <Road style={{top: '-116px', left: '2px', transform: 'rotate(32deg)'}}/>
-          <Road style={{top: '-225px', left: '62px', transform: 'rotate(34deg)'}}/>
-          <Road style={{top: '-137px', left: '61px', transform: 'rotate(-32deg)'}}/>
+          <Road style={{top: '-255px', left: '89px', transform: 'rotate(90deg)'}}/>
         </>
       )}
     </div>
