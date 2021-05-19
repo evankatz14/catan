@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Node from './Node.jsx';
+import Road from './Road.jsx';
 
-const style1 = {left: '100px', top: '-35px'}
+const style1 = {left: '92px', top: '-34px'}
 const style2 = {left: '35px', top: '-30px'}
-const style3 = {left: '-30px', top: '-95px'}
+const style3 = {left: '-22px', top: '-94px'}
 
 export default function OtherRowHex({type, adjacent, position, last}) {
   const nodes = [];
@@ -22,12 +23,16 @@ export default function OtherRowHex({type, adjacent, position, last}) {
 
   return (
     <div >
-      <button className="hex" style={{border: 'solid', borderRadius: '50%', width: '100px', height: '100px'}}>
+      <button className="hex" >
         {type}
       </button>
       <Node resources={nodes[0]} style={style1}/>
       <Node resources={nodes[1]} style={style2}/>
       <Node resources={nodes[2]} style={style3}/>
+      <Road style={{top: '-145px', left: '-25px', transform: 'rotate(90deg)'}}/>
+      <Road style={{top: '-106px', left: '3px', transform: 'rotate(32deg)'}}/>
+      <Road style={{top: '-116px', left: '61px', transform: 'rotate(-32deg)'}}/>
+      <Road style={{top: '-175px', left: '89px', transform: 'rotate(90deg)'}}/>
     </div>
   )
 }

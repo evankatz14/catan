@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import Node from './Node.jsx';
+import Road from './Road.jsx';
 
-const style1 = {left: '35px'}
-const style2 = {left: '100px', top: '2px'}
-const style3 = {left: '100px', top: '35px'}
-const style4 = {left: '35px', top: '-60px'}
-const style5 = {left: '-30px', top: '-120px'}
-const style6 = {left: '-30px', top: '-215px'}
+const nodeStyle1 = {left: '35px'}
+const nodeStyle2 = {left: '92px', top: '4px'}
+const nodeStyle3 = {left: '92px', top: '36px'}
+const nodeStyle4 = {left: '35px', top: '-60px'}
+const nodeStyle5 = {left: '-22px', top: '-124px'}
+const nodeStyle6 = {left: '-22px', top: '-216px'}
 
 export default function FirstRowHex({type, adjacent, position, last}) {
   const nodes = [];
@@ -39,17 +40,32 @@ export default function FirstRowHex({type, adjacent, position, last}) {
   }
   return (
     <div >
-      <Node resources={nodes[0]} style={style1}/>
-      <Node resources={nodes[1]} style={style2}/>
-      <Node resources={nodes[2]} style={style3}/>
+      <Node resources={nodes[0]} style={nodeStyle1}/>
+      <Node resources={nodes[1]} style={nodeStyle2}/>
+      <Node resources={nodes[2]} style={nodeStyle3}/>
       <button className="hex" style={{top: '-60px'}}>
         {type}
       </button>
-      <Node resources={nodes[3]} style={style4}/>
+      <Node resources={nodes[3]} style={nodeStyle4}/>
       {!last && (
         <>
-          <Node resources={nodes[4]} style={style5}/>
-          <Node resources={nodes[5]} style={style6}/>
+          <Node resources={nodes[4]} style={nodeStyle5}/>
+          <Node resources={nodes[5]} style={nodeStyle6}/>
+          <Road style={{top: '-255px', left: '2px', transform: 'rotate(-34deg)'}}/>
+          <Road style={{top: '-215px', left: '-25px', transform: 'rotate(90deg)'}}/>
+          <Road style={{top: '-176px', left: '2px', transform: 'rotate(32deg)'}}/>
+          <Road style={{top: '-285px', left: '62px', transform: 'rotate(34deg)'}}/>
+          <Road style={{top: '-197px', left: '61px', transform: 'rotate(-32deg)'}}/>
+        </>
+      )}
+      {last && (
+        <>
+          <Road style={{top: '-195px', left: '2px', transform: 'rotate(-34deg)'}}/>
+          <Road style={{top: '-155px', left: '-25px', transform: 'rotate(90deg)'}}/>
+          <Road style={{top: '-117px', left: '3px', transform: 'rotate(32deg)'}}/>
+          <Road style={{top: '-225px', left: '62px', transform: 'rotate(34deg)'}}/>
+          <Road style={{top: '-185px', left: '89px', transform: 'rotate(90deg)'}}/>
+          <Road style={{top: '-146px', left: '61px', transform: 'rotate(-32deg)'}}/>
         </>
       )}
     </div>
