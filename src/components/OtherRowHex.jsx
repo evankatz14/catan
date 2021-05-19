@@ -22,6 +22,10 @@ export default function OtherRowHex({type, adjacent, position, first, last}) {
     }
     nodes.push(currentNode);
   }
+  if (last) {
+    console.log('adjacent', adjacent)
+    console.log('nodes', nodes)
+  }
   return (
     <div className="full-hex">
       <button className="hex" >
@@ -40,8 +44,8 @@ export default function OtherRowHex({type, adjacent, position, first, last}) {
       )}
       {last && (
         <>
-          <Node index={5} resources={nodes[2]} style={style3}/>
-          <Node index={6} resources={nodes[3]} style={style4}/>
+          <Node index={5} resources={nodes[3]} style={style3}/>
+          <Node index={6} resources={nodes[4]} style={style4}/>
           <Road style={{top: '-204px', left: '89px', transform: 'rotate(90deg)'}}/>
           <Road style={{top: '-263px', left: '61px', transform: 'rotate(32deg)'}}/>
         </>

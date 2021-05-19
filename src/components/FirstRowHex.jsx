@@ -11,32 +11,17 @@ const nodeStyle6 = {left: '92px', top: '-265px'}
 
 export default function FirstRowHex({type, adjacent, position, last}) {
   const nodes = [];
-  if (last) {
-    for (let i = 0; i < 6; i++) {
-      let currentNode = [type]
-      let first = adjacent[Object.keys(adjacent)[i]];
-      let second = adjacent[Object.keys(adjacent)[(i + 1) % 6]];
-      if (first) {
-        currentNode.push(first)
-      }
-      if (second) {
-        currentNode.push(second)
-      }
-      nodes.push(currentNode);
+  for (let i = 0; i < 6; i++) {
+    let currentNode = [type]
+    let first = adjacent[Object.keys(adjacent)[i]];
+    let second = adjacent[Object.keys(adjacent)[(i + 1) % 6]];
+    if (first) {
+      currentNode.push(first)
     }
-  } else {
-    for (let i = 0; i < 4; i++) {
-      let currentNode = [type]
-      let first = adjacent[Object.keys(adjacent)[i]];
-      let second = adjacent[Object.keys(adjacent)[i + 1]];
-      if (first) {
-        currentNode.push(first)
-      }
-      if (second) {
-        currentNode.push(second)
-      }
-      nodes.push(currentNode);
+    if (second) {
+      currentNode.push(second)
     }
+    nodes.push(currentNode);
   }
   return (
     <div className="full-hex">

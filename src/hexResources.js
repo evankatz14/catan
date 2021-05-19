@@ -1,11 +1,23 @@
 const hexResources = [
  'ore',
+ 'ore',
+ 'ore',
+ 'wood',
+ 'wood',
+ 'wood',
  'wood',
  'sheep',
+ 'sheep',
+ 'sheep',
+ 'sheep',
+ 'wheat',
+ 'wheat',
+ 'wheat',
  'wheat',
  'brick',
- 'sheep',
- 'wood'
+ 'brick',
+ 'brick',
+ 'desert'
 ]
 
 export default hexResources;
