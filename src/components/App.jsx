@@ -16,35 +16,34 @@ export default function App() {
 
   //create first row hex objects
   let position = 0;
-  const firstRowLength = 2;
-  const firstRow = resources.slice(0,2).map((type, index) => {
-    let space;
-    if (index < (firstRowLength - 1)) {
-      space = {
-        position,
-        type,
-        adjacent: {tl: null, tr: null, r: resources[index + 1], br: resources[index + 2], bl: null, l: null },
-        first: index === 0,
-        last: false
-      }
-    } else {
-      space = {
-        position,
-        type,
-        adjacent: {tl: null, tr: null, r: null, br: null, bl: resources[index + 1], l: resources[index - 1]},
-        last: true
-      }
+  const firstRowLength = 3;
+  const firstRow = resources.slice(0,3).map((type, index) => {
+    const isFirst = index === 0;
+    const isLast = index === (firstRowLength - 1);
+
+    let space = {
+      position,
+      type,
+      adjacent: {tr: null, tl: null, l: resources[position - 1], bl: resources[position + 3], br: resources[position + 4], r: isLast ? null : resources[position + 1]},
+      first: isFirst,
+      last: isLast
     }
     position += 1;
     return space;
   })
 
   //create second row hex opjects
-  const secondRow = resources.slice(2).map((type, index) => {
-    const space = {
+  const secondRowLength = 4;
+  const secondRow = resources.slice(3).map((type, index) => {
+    const isFirst = index === 0;
+    const isLast = index === (secondRowLength - 1);
+
+    let space = {
       position,
       type,
-      adjacent: {r: null, br: null, bl: null, l: null}
+      adjacent: {tr: null, tl: null, l: isFirst ? null : resources[position - 1], bl: null, br: null, r: resources[position + 1] },
+      first: isFirst,
+      last: isLast
     }
     position += 1;
     return space;
@@ -55,10 +54,10 @@ export default function App() {
       <h1>Catan</h1>
       <div className="board">
         <div className="rowOne" >
-          {firstRow.map((hex) => (<FirstRowHex key={hex.position} position={hex.position} type={hex.type} adjacent={hex.adjacent} last={hex.last} />))}
+          {firstRow.map((hex) => (<FirstRowHex key={hex.position} position={hex.position} type={hex.type} adjacent={hex.adjacent} first={hex.first} last={hex.last} />))}
         </div>
-        <div className="rowTow" >
-          {secondRow.map((hex) => (<OtherRowHex key={hex.position} position={hex.position} type={hex.type} adjacent={hex.adjacent} />))}
+        <div className="rowTwo" >
+          {secondRow.map((hex) => (<OtherRowHex key={hex.position} position={hex.position} type={hex.type} adjacent={hex.adjacent} first={hex.first} last={hex.last} />))}
         </div>
       </div>
     </>
