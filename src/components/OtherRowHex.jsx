@@ -5,10 +5,10 @@ import Road from './Road.jsx';
 const style1 = {left: '-22px', top: '-34px'}
 const style2 = {left: '35px', top: '-30px'}
 const style3 = {left: '92px', top: '-124px'}
-const style4 = {left: '92px', top: '-215px'}
+const style4 = {left: '92px', top: '-227px'}
 const style5 = {left: '-22px', top: '-186px'}
 
-export default function OtherRowHex({resource, adjacent, position, first, last}) {
+export default function OtherRowHex({resource, adjacent, position, first, last, isTopHalf}) {
   const nodes = [];
   for (let i = 1; i < 6; i++) {
     let currentNode = [resource]
@@ -32,7 +32,7 @@ export default function OtherRowHex({resource, adjacent, position, first, last})
       <Road style={{top: '-115px', left: '-25px', transform: 'rotate(90deg)'}}/>
       <Road style={{top: '-76px', left: '3px', transform: 'rotate(32deg)'}}/>
       <Road style={{top: '-86px', left: '61px', transform: 'rotate(-32deg)'}}/>
-      {first &&(
+      {first && isTopHalf &&(
         <>
           <Node index={2} resources={nodes[0]} style={style5}/>
           <Road style={{top: '-224px', left: '3px', transform: 'rotate(-32deg)'}}/>
@@ -41,9 +41,13 @@ export default function OtherRowHex({resource, adjacent, position, first, last})
       {last && (
         <>
           <Node index={5} resources={nodes[3]} style={style3}/>
-          <Node index={6} resources={nodes[4]} style={style4}/>
-          <Road style={{top: '-204px', left: '89px', transform: 'rotate(90deg)'}}/>
-          <Road style={{top: '-263px', left: '61px', transform: 'rotate(32deg)'}}/>
+          <Road style={{top: '-175px', left: '89px', transform: 'rotate(90deg)'}}/>
+          {isTopHalf && (
+            <>
+              <Node index={6} resources={nodes[4]} style={style4}/>
+              <Road style={{top: '-263px', left: '61px', transform: 'rotate(32deg)'}}/>
+            </>
+          )}
         </>
       )}
     </div>

@@ -11,13 +11,13 @@ const hexResources = [
  'sheep',
  'sheep',
  'wheat',
-//  'wheat',
-//  'wheat',
-//  'wheat',
-//  'brick',
-//  'brick',
-//  'brick',
-//  'desert'
+ 'wheat',
+ 'wheat',
+ 'wheat',
+ 'brick',
+ 'brick',
+ 'brick',
+ 'desert'
 ]
 
 export default hexResources;
