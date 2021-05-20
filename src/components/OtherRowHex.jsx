@@ -8,7 +8,7 @@ const style3 = {left: '92px', top: '-124px'}
 const style4 = {left: '92px', top: '-227px'}
 const style5 = {left: '-22px', top: '-186px'}
 
-export default function OtherRowHex({resource, adjacent, position, first, last, isTopHalf, currentPlayer}) {
+export default function OtherRowHex({resource, numberToken, adjacent, position, first, last, isTopHalf, currentPlayer}) {
   const nodes = [];
   for (let i = 1; i < 6; i++) {
     let currentNode = [resource]
@@ -24,8 +24,9 @@ export default function OtherRowHex({resource, adjacent, position, first, last, 
   }
   return (
     <div className="full-hex">
-      <button className="hex" >
-        {resource}
+      <button className="hex">
+        <p>{numberToken}</p>
+        <p>{resource}</p>
       </button>
       <Node currentPlayer={currentPlayer} index={3} resources={nodes[1]} style={style1}/>
       <Node currentPlayer={currentPlayer} index={4} resources={nodes[2]} style={style2}/>

@@ -9,7 +9,7 @@ const nodeStyle4 = {left: '35px', top: '-60px'}
 const nodeStyle5 = {left: '92px', top: '-175px'}
 const nodeStyle6 = {left: '92px', top: '-265px'}
 
-export default function FirstRowHex({resource, adjacent, position, last, currentPlayer}) {
+export default function FirstRowHex({resource, numberToken, adjacent, position, last, currentPlayer}) {
   const nodes = [];
   for (let i = 0; i < 6; i++) {
     let currentNode = [resource]
@@ -29,7 +29,8 @@ export default function FirstRowHex({resource, adjacent, position, last, current
       <Node currentPlayer={currentPlayer} index={2} resources={nodes[1]} style={nodeStyle2}/>
       <Node currentPlayer={currentPlayer} index={3} resources={nodes[2]} style={nodeStyle3}/>
       <button className="hex" style={{top: '-60px'}}>
-        {resource}
+        <p>{numberToken}</p>
+        <p>{resource}</p>
       </button>
       <Node currentPlayer={currentPlayer} index={4} resources={nodes[3]} style={nodeStyle4}/>
       <Road currentPlayer={currentPlayer} style={{top: '-195px', left: '2px', transform: 'rotate(-34deg)'}}/>

@@ -1,19 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import FirstRowHex from './FirstRowHex.jsx';
 import OtherRowHex from './OtherRowHex.jsx';
-import hexResources from '../hexResources.js';
+import constants from '../constants.js';
 
 export default function Board({currentPlayer}) {
-  const [resources, setResources] = useState(shuffle(hexResources))
-  const [firstRowLength, setFirstRowLength] = useState(3);
-  const [firstRow, setFirstRow] = useState([]);
-  const [secondRow, setSecondRow] = useState([]);
-  const [thirdRow, setThirdRow] = useState([]);
-  const [fourthRow, setFourthRow] = useState([]);
-  const [fifthRow, setFifthRow] = useState([]);
-
-  //define hex value types
-  function shuffle(array) {
+  const shuffle = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
@@ -21,7 +12,16 @@ export default function Board({currentPlayer}) {
     return array
   }
 
-  function buildHexRow(currentPosition, firstRowLength, currentRow, resources, isTopHalf = false) {
+  const [resources, setResources] = useState([])
+  const [numberTokens, setNumberTokens] = useState([])
+  const [firstRowLength, setFirstRowLength] = useState(3);
+  const [firstRow, setFirstRow] = useState([]);
+  const [secondRow, setSecondRow] = useState([]);
+  const [thirdRow, setThirdRow] = useState([]);
+  const [fourthRow, setFourthRow] = useState([]);
+  const [fifthRow, setFifthRow] = useState([]);
+
+  function buildHexRow(currentPosition, firstRowLength, currentRow, resources, numberTokens, isTopHalf = false) {
     const rowLength = firstRowLength + currentRow;
     const start = currentPosition;
     const end = currentPosition + rowLength;
@@ -32,6 +32,7 @@ export default function Board({currentPlayer}) {
       let space = {
         position: currentPosition,
         resource,
+        numberToken: numberTokens[currentPosition],
         adjacent: {
           tr: null,
           tl: null,
@@ -56,11 +57,17 @@ export default function Board({currentPlayer}) {
     return result;
   }
   useEffect(() => {
-    setFirstRow(buildHexRow(0, firstRowLength, 0, resources, true));
-    setSecondRow(buildHexRow(3, firstRowLength, 1, resources, true));
-    setThirdRow(buildHexRow(7, firstRowLength, 2, resources));
-    setFourthRow(buildHexRow(12, firstRowLength, 1, resources));
-    setFifthRow(buildHexRow(16, firstRowLength, 0, resources));
+    const currentResources = shuffle(constants.hexResources);
+    const currentNumberTokens = shuffle(constants.numberTokens);
+    const desertLoc = currentResources.indexOf('desert');
+    currentNumberTokens.splice(desertLoc, 0, 7);
+    setResources(currentResources);
+    setNumberTokens(currentNumberTokens);
+    setFirstRow(buildHexRow(0, firstRowLength, 0, currentResources, currentNumberTokens, true));
+    setSecondRow(buildHexRow(3, firstRowLength, 1, currentResources, currentNumberTokens, true));
+    setThirdRow(buildHexRow(7, firstRowLength, 2, currentResources, currentNumberTokens));
+    setFourthRow(buildHexRow(12, firstRowLength, 1, currentResources, currentNumberTokens));
+    setFifthRow(buildHexRow(16, firstRowLength, 0, currentResources, currentNumberTokens));
   }, [])
 
   return (
@@ -74,6 +81,7 @@ export default function Board({currentPlayer}) {
                 key={hex.position}
                 position={hex.position}
                 resource={hex.resource}
+                numberToken={hex.numberToken}
                 adjacent={hex.adjacent}
                 first={hex.first}
                 last={hex.last}
@@ -87,6 +95,7 @@ export default function Board({currentPlayer}) {
                 key={hex.position}
                 position={hex.position}
                 resource={hex.resource}
+                numberToken={hex.numberToken}
                 adjacent={hex.adjacent}
                 first={hex.first}
                 last={hex.last}
@@ -101,6 +110,7 @@ export default function Board({currentPlayer}) {
                 key={hex.position}
                 position={hex.position}
                 resource={hex.resource}
+                numberToken={hex.numberToken}
                 adjacent={hex.adjacent}
                 first={hex.first}
                 last={hex.last}
@@ -115,6 +125,7 @@ export default function Board({currentPlayer}) {
                 key={hex.position}
                 position={hex.position}
                 resource={hex.resource}
+                numberToken={hex.numberToken}
                 adjacent={hex.adjacent}
                 first={hex.first}
                 last={hex.last}
@@ -128,6 +139,7 @@ export default function Board({currentPlayer}) {
                 key={hex.position}
                 position={hex.position}
                 resource={hex.resource}
+                numberToken={hex.numberToken}
                 adjacent={hex.adjacent}
                 first={hex.first}
                 last={hex.last}
